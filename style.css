@@ -2,64 +2,99 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Times New Roman;
+  font-family: Arial, sans-serif;
 }
 
 body {
-  width: 100%;
-  height: 100vh;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #abdbe3;
+  height: 100vh;
+  background-color: #165672;
   color: #063970;
 }
 
 .calculator {
-  background-color: #1e81b0;
-  padding: 15px;
+  background-color: var(--calculator-bg-color, #1e81b0);
+  padding: 20px;
   border-radius: 10px;
-  box-shadow: 5px 5px 10px rgba(173, 216, 230, 0.8);
-  width: fit-content;
-  text-align: center;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+  position: relative;
 }
 
 .title {
-  margin: 20px;
-  font-size: 1.5rem;
+  margin-bottom: 20px;
+  text-align: center;
 }
 
-.input {
+#display {
   width: 100%;
   padding: 10px;
   text-align: right;
   font-size: 1.5rem;
   border-radius: 5px;
   border: none;
-  outline: none;
   margin-bottom: 10px;
 }
 
-/* Styling for buttons */
-button {
-  width: 60px;
-  height: 60px;
-  margin: 5px;
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.btn {
+  padding: 20px;
   font-size: 1.2rem;
   border: none;
   border-radius: 5px;
   background-color: #ffffff;
-  color: #063970;
+  color: var(--button-text-color, #063970);
   cursor: pointer;
-  transition: 0.3s;
+  transition: background-color 0.3s;
 }
 
-button:hover {
+.btn:hover {
   background-color: lightblue;
 }
 
-button:active {
-  background-color: #b0c4de;
-  transform: scale(0.95);
+.btn:active {
+  background-color: #165672;
+}
+
+.theme-toggle {
+  position: absolute;
+  top: -15px;
+  right: -15px;
+  width: 50px;
+  height: 50px;
+  border: none;
+  border-radius: 50%;
+  background-color: #ffffff;
+  color: var(--button-text-color, #063970);
+  cursor: pointer;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+body.light-theme {
+  --calculator-bg-color: #e5a8df;
+  --button-text-color: #063970;
+  background-color: #981e8d;
+  color: #630359;
+}
+
+body.light-theme .btn {
+  background-color: #063970;
+  color: #e5a8df;
+}
+
+body.light-theme .btn:hover {
+  background-color: #e5a8df;
+  color: #063970;
+}
+
+body.light-theme .theme-toggle {
+  background-color: #063970;
+  color: #e5a8df;
 }
